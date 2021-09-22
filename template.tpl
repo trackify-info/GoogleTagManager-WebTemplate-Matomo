@@ -15,7 +15,7 @@ ___INFO___
   "securityGroups": [],
   "displayName": "Matomo Analytics (formerly Piwik)",
   "categories": [
-    "ANALYTICS"
+    "ANALYTICS", "ATTRIBUTION", "CONVERSIONS", "SESSION_RECORDING"
   ],
   "brand": {
     "id": "github.com_trackify-info",
