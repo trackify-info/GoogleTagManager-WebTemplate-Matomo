@@ -1,5 +1,5 @@
 # GoogleTagManager WebTemplate for Matomo Analytics
-Usse Matomo Analytics (formerly Piwik) as a Custom Tag Template directly in Google Tag Manager
+Use Matomo Analytics (formerly Piwik) as a Custom Tag Template directly in Google Tag Manager, this template respects the Google Consent Mode Api
 
 ## How to use Template in Google TagManager
 
@@ -23,5 +23,6 @@ Steps:
 Trackify (https://trackify.info)
 
 # Release
+2021 - Coogle Consent Mode Api Integration 
 2021 - Initial Release
 
