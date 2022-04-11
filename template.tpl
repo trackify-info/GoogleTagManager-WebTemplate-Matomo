@@ -68,10 +68,6 @@ ___TEMPLATE_PARAMETERS___
     "valueValidators": [
       {
         "type": "NON_EMPTY"
-      },
-      {
-        "type": "POSITIVE_NUMBER",
-        "errorMessage": "Please provide a valid website ID"
       }
     ],
     "valueHint": "1",
@@ -114,112 +110,6 @@ ___TEMPLATE_PARAMETERS___
         "errorMessage": "Please specify the domains without commas"
       }
     ]
-  },
-  {
-    "type": "SELECT",
-    "name": "matomoVersion",
-    "displayName": "Matomo Version",
-    "macrosInSelect": true,
-    "selectItems": [
-      {
-        "value": "3.3.0",
-        "displayValue": "3.3.0"
-      },
-      {
-        "value": "3.4.0",
-        "displayValue": "3.4.0"
-      },
-      {
-        "value": "3.5.1",
-        "displayValue": "3.5.1"
-      },
-      {
-        "value": "3.6.1",
-        "displayValue": "3.6.1"
-      },
-      {
-        "value": "3.7.0",
-        "displayValue": "3.7.0"
-      },
-      {
-        "value": "3.8.1",
-        "displayValue": "3.8.1"
-      },
-      {
-        "value": "3.9.1",
-        "displayValue": "3.9.1"
-      },
-      {
-        "value": "3.10.0",
-        "displayValue": "3.10.0"
-      },
-      {
-        "value": "3.11.0",
-        "displayValue": "3.11.0"
-      },
-      {
-        "value": "3.12.0",
-        "displayValue": "3.12.0"
-      },
-      {
-        "value": "3.13.6",
-        "displayValue": "3.13.6"
-      },
-      {
-        "value": "3.14.0",
-        "displayValue": "3.14.0"
-      },
-      {
-        "value": "3.14.0",
-        "displayValue": "3.14.1"
-      },
-      {
-        "value": "4.0.0",
-        "displayValue": "4.0.0"
-      },
-      {
-        "value": "4.0.5",
-        "displayValue": "4.0.5"
-      },
-      {
-        "value": "4.1.0",
-        "displayValue": "4.1.0"
-      },
-      {
-        "value": "4.1.1",
-        "displayValue": "4.1.1"
-      },
-      {
-        "value": "4.2.0",
-        "displayValue": "4.2.0"
-      },
-      {
-        "value": "4.2.1",
-        "displayValue": "4.2.1"
-      },
-      {
-        "value": "4.3.0",
-        "displayValue": "4.3.0"
-      },
-      {
-        "value": "4.3.1",
-        "displayValue": "4.3.1"
-      },
-      {
-        "value": "4.4.0",
-        "displayValue": "4.4.0"
-      },
-      {
-        "value": "4.4.1",
-        "displayValue": "4.4.1"
-      },
-      {
-        "value": "4.5.0",
-        "displayValue": "4.5.0"
-      }
-    ],
-    "simpleValueType": true,
-    "defaultValue": "4.5.0"
   },
   {
     "type": "RADIO",
@@ -856,7 +746,7 @@ _matomo = createQueue('_paq');
 
 if (data.instanceURL.slice(-1) !== '/') data.instanceURL += '/';
 
-if (data.matomoVersion == undefined || data.matomoVersion == "") data.matomoVersion = "4.5.0";
+if (data.matomoVersion == undefined || data.matomoVersion == "") data.matomoVersion = "4.8.0";
 
 if (data.useAlternativeCDNSource == true) {
   jsTracker = "https://cdn.jsdelivr.net/gh/matomo-org/matomo@"+data.matomoVersion+"/matomo.min.js";
