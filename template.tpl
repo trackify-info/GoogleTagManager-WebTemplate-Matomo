@@ -1,4 +1,4 @@
-___TERMS_OF_SERVICE___
+﻿___TERMS_OF_SERVICE___
 
 By creating or modifying this file you agree to Google Tag Manager's Community
 Template Gallery Developer Terms of Service available at
@@ -488,11 +488,22 @@ ___TEMPLATE_PARAMETERS___
         "help": "Google use Consent API variable \u0027analytics_storage\u0027 with value \u0027granted\u0027 to allow, that analytics tools can use an save cookie to client browsers, we use this to trigger Matomo to use cookies for client tracking"
       },
       {
-        "type": "CHECKBOX",
+        "type": "SELECT",
         "name": "useCookies",
-        "checkboxText": "Use visitor cookies",
+        "displayName": "Use visitor cookies",
+        "macrosInSelect": true,
+        "selectItems": [
+          {
+            "value": true,
+            "displayValue": "true"
+          },
+          {
+            "value": false,
+            "displayValue": "false"
+          }
+        ],
         "simpleValueType": true,
-        "help": "If turned off, you won’t set visitor cookies like _pk_id.* and _pk_ses.* that are responsible for recognizing visitors and their sessions.",
+        "help": "Set to \"true\", \"false\" or use a variable that returns \"true\" or \"false\". If set to \"false\", you won’t set visitor cookies like _pk_id.* and _pk_ses.* that are responsible for recognizing visitors and their sessions.",
         "defaultValue": true
       },
       {
@@ -1140,4 +1151,7 @@ setup: |2-
 
 
 ___NOTES___
+
+Created on 7.7.2022, 21:48:20
+
 
