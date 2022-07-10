@@ -832,11 +832,6 @@ if (data.useCookieConsent == true || data.useGoogleConsentAPI == true) {
 // Option to set allow CookieConsent
 let useRememberCookieConsentGiven = data.useRememberCookieConsentGiven;
 let useCookieConsentGiven = data.useCookieConsentGiven;
-
-log('Consent Stuff: isConsentGranted - ' + isConsentGranted('analytics_storage'));
-log('Consent Stuff: useRememberCookieConsentGiven - ' + useRememberCookieConsentGiven);
-
-
 if (((data.useGoogleConsentAPI == true) && isConsentGranted('analytics_storage')) || useRememberCookieConsentGiven == true || useRememberCookieConsentGiven == "true") {
   _matomo(['rememberCookieConsentGiven']);
     log('Matomo Analytics Remember Cookie.');
