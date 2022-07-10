@@ -799,7 +799,6 @@ if (data.disableBrowserFeatureDetection == true) {
   log('Disabled browser feature detection.');
 }
 
-
 // Set secure cookie
 if (data.setSecureCookie == true) {
   _matomo(['setSecureCookie', 1]);
@@ -833,7 +832,12 @@ if (data.useCookieConsent == true || data.useGoogleConsentAPI == true) {
 // Option to set allow CookieConsent
 let useRememberCookieConsentGiven = data.useRememberCookieConsentGiven;
 let useCookieConsentGiven = data.useCookieConsentGiven;
-if (isConsentGranted('analytics_storage') || useRememberCookieConsentGiven == true || useRememberCookieConsentGiven == "true") {
+
+log('Consent Stuff: isConsentGranted - ' + isConsentGranted('analytics_storage'));
+log('Consent Stuff: useRememberCookieConsentGiven - ' + useRememberCookieConsentGiven);
+
+
+if (((data.useGoogleConsentAPI == true) && isConsentGranted('analytics_storage')) || useRememberCookieConsentGiven == true || useRememberCookieConsentGiven == "true") {
   _matomo(['rememberCookieConsentGiven']);
     log('Matomo Analytics Remember Cookie.');
 
