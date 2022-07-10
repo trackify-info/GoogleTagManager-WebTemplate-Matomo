@@ -689,6 +689,25 @@ ___TEMPLATE_PARAMETERS___
             "help": "Should be true or false"
           }
         ]
+      },
+      {
+        "type": "SELECT",
+        "name": "disableBrowserFeatureDetection",
+        "displayName": "Disable Browser Feature Detection",
+        "macrosInSelect": true,
+        "selectItems": [
+          {
+            "value": true,
+            "displayValue": "true"
+          },
+          {
+            "value": false,
+            "displayValue": "false"
+          }
+        ],
+        "simpleValueType": true,
+        "help": "When this option is set to \"true\", no browser features are being accessed, and they also aren’t used to create the short-lived identifier (similar to a fingerprint). The browser resolution will be also no longer tracked and won’t appear in your reports in Matomo any more. Activate when tracking without consent to comply with TTDSG (Germany’s ePrivacy implementation).",
+        "defaultValue": false
       }
     ]
   },
@@ -773,6 +792,13 @@ if (data.useCookies == false) {
   _matomo(['disableCookies']);
   log('disable Matomo Analytics Cookie.');
 }
+
+// Disable browser feature detection
+if (data.disableBrowserFeatureDetection == true) {
+  _matomo(['disableBrowserFeatureDetection']);
+  log('Disabled browser feature detection.');
+}
+
 
 // Set secure cookie
 if (data.setSecureCookie == true) {
