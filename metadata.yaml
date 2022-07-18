@@ -1,6 +1,8 @@
 homepage: "https://www.trackify.info"
 documentation: "https://github.com/trackify-info/GoogleTagManager-WebTemplate-Matomo"
 versions:
+  - sha: 44f9e81a52ce70a776895b451e9af5e9e9b79a06
+    changeNotes: removed temp. debug logging
   - sha: 4627a6879bf4d340a41becf4818c5911e813c174
     changeNotes: changed "useCookies" option to drop down
   - sha: bb1080235a342b5667499b92d4be0114ae333a57
