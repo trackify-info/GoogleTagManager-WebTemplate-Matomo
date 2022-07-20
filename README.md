@@ -19,14 +19,14 @@ Steps:
 * **Site ID** - The unique ID for your site in Matomo Web Analytics
 * **Analytics domains** - The domains tracked by Matomo Web Analytics code
 
-# Annotaion
+## Annotation
 
 We do not log or save any data of you or your customers
 
-# Author
+## Author
 Trackify (https://trackify.info)
 
-# Release
-2021 - Coogle Consent Mode Api Integration 
-2021 - Initial Release
-2022 - many releases with feature extensions
+## Release
+2022 - many releases with feature extensions<br/>
+2021 - Coogle Consent Mode Api Integration<br/>
+2021 - Initial Release<br/>
