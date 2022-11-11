@@ -1,10 +1,9 @@
-﻿___TERMS_OF_SERVICE___
+﻿﻿___TERMS_OF_SERVICE___
 
 By creating or modifying this file you agree to Google Tag Manager's Community
 Template Gallery Developer Terms of Service available at
 https://developers.google.com/tag-manager/gallery-tos (or such other URL as
 Google may provide), as modified from time to time.
-
 
 ___INFO___
 
@@ -746,6 +745,51 @@ ___TEMPLATE_PARAMETERS___
         "type": "EQUALS"
       }
     ]
+  },
+  {
+    "type": "TEXT",
+    "name": "referrerUrl",
+    "displayName": "Referrer Url",
+    "simpleValueType": true
+  },
+  {
+    "type": "TEXT",
+    "name": "documentTitle",
+    "displayName": "Document Title",
+    "simpleValueType": true
+  },
+  {
+    "type": "TEXT",
+    "name": "customUrl",
+    "displayName": "Custom Url",
+    "simpleValueType": true
+  },
+  {
+    "type": "GROUP",
+    "name": "customDimensionsGroup",
+    "displayName": "Custom Dimensions",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
+      {
+        "type": "SIMPLE_TABLE",
+        "name": "customDimensions",
+        "displayName": "",
+        "simpleTableColumns": [
+          {
+            "defaultValue": "",
+            "displayName": "Index",
+            "name": "index",
+            "type": "TEXT"
+          },
+          {
+            "defaultValue": "",
+            "displayName": "Dimension Value",
+            "name": "dimension_value",
+            "type": "TEXT"
+          }
+        ]
+      }
+    ]
   }
 ]
 
@@ -856,6 +900,41 @@ const consentCallback = (consentType, granted) => {
   }
 };
 
+// Custom URL and Referrer URL
+if (data.hasOwnProperty('referrerUrl')) {
+    _matomo(['setReferrerUrl', data.referrerUrl]);
+}
+
+if (data.hasOwnProperty('customUrl')) {
+  _matomo(['setCustomUrl', data.customUrl]);
+}
+
+// Set Document Title - needed for  SPA
+if (data.hasOwnProperty('documentTitle')) {
+  _matomo(['setDocumentTitle', data.documentTitle]);
+
+}
+
+// Delete previously set customDimensions to circumvent pageViewEvent interference
+if (data.tagAction !== 'trackPageview')
+{
+  if (data.hasOwnProperty('customDimensions'))
+  {
+    for(var i=0, len=data.customDimensions.length; i < len; i++){
+      _matomo(['deleteCustomDimension', data.customDimensions[i].index]);
+
+    }
+  }
+}
+
+if (data.tagAction == 'trackPageview' || data.tagAction == 'eventTracking' || data.tagAction == 'goalTracking' || data.tagAction == 'ecommerceTracking') {
+  // Custom Dimensions
+  if (data.hasOwnProperty('customDimensions')) {
+    for(var i=0, len=data.customDimensions.length; i < len; i++){
+      _matomo(['setCustomDimension', data.customDimensions[i].index, data.customDimensions[i].dimension_value]);
+    }
+  }
+}
 
 if (data.tagAction == 'ecommerceTracking') {
   let productSKU = data.productSKU;
@@ -883,9 +962,9 @@ if (data.tagAction == 'ecommerceTracking') {
   }
   if (grandTotal != null) {
     _matomo(['trackEcommerceCartUpdate', grandTotal]);
-  }  
+  }
   log('Matomo Analytics ecommerceTracking Event fired.');
-} else 
+} else
 if (data.tagAction == 'eventTracking') {
   let eventCategory = data.eventCategory;
   let eventAction = data.eventAction;
@@ -893,7 +972,7 @@ if (data.tagAction == 'eventTracking') {
   let eventValue = data.eventValue;
   _matomo(['trackEvent', eventCategory, eventAction, eventName, eventValue]);
   log('Matomo Analytics Event fired.');
-} else 
+} else
 if (data.tagAction == 'goalTracking') {
   let goalId = data.goalId;
   let goalRevenue = data.goalRevenue;
@@ -901,7 +980,6 @@ if (data.tagAction == 'goalTracking') {
   log('Matomo Analytics Goal Tracking fired.');
 } else
 if (data.tagAction == 'trackPageview') {
-
 // Sending tracking code options from values set in template input fields
 // Analytics domains
 _matomo(['setDomains', data.analyticsDomains]);
